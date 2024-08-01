@@ -26,14 +26,15 @@ public:
     ETileType TileType;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    int32 FoodProduction;
+    int32 PrimaryResourceValue;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    int32 ProductionValue;
+    int32 SecondaryResourceValue;
 
-    UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    int32 ScienceValue;
+public:
+    UFUNCTION(BlueprintCallable)
+    void InitializeResources();
 
-    UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    int32 GoldValue;
+    UFUNCTION(BlueprintCallable)
+    void GetResourceProduction(int32& OutFood, int32& OutProduction, int32& OutScience, int32& OutGold);
 };

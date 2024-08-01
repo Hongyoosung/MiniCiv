@@ -13,14 +13,28 @@ class MINICIV_API ACity : public AActor
 	GENERATED_BODY()
 	
 public:	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 Population;
+    ACity();
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TArray<ATile*> WorkedTiles;
-
+    UFUNCTION(BlueprintCallable)
+    void CollectResources();
 
 public:
-	UFUNCTION(BlueprintCallable)
-	void CollectResources();
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    int32 Population;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    TArray<ATile*> WorkedTiles;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    int32 StoredFood;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    int32 StoredProduction;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    int32 StoredScience;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    int32 StoredGold;
 };
