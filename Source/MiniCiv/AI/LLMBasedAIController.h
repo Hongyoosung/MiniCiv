@@ -22,8 +22,12 @@ class MINICIV_API ALLMBasedAIController : public AAIController
 public:
 	ALLMBasedAIController();
 
+    void MakeDecision(const FString& GameState);
+
+private:
 	void SendRequest(const FString& InMessage);
     void OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful);
+    void ParseAndExecuteAction(const FString& ActionString);
 
 private:
     UPROPERTY(EditAnywhere, Category = "ChatGPT")
@@ -32,5 +36,6 @@ private:
     UPROPERTY(EditAnywhere, Category = "ChatGPT")
     FString ApiKey;
 
+    FHttpModule* Http;
     TSharedPtr<IHttpRequest> HttpRequest;
 };

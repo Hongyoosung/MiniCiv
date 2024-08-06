@@ -21,7 +21,15 @@ class MINICIV_API ATile : public AActor
 {
 	GENERATED_BODY()
 	
-public:	
+
+public:
+    UFUNCTION(BlueprintCallable)
+    void InitializeResources();
+
+    UFUNCTION(BlueprintCallable)
+    void GetResourceProduction(int32& OutFood, int32& OutProduction, int32& OutScience, int32& OutGold);
+
+public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
     ETileType TileType;
 
@@ -31,10 +39,4 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
     int32 SecondaryResourceValue;
 
-public:
-    UFUNCTION(BlueprintCallable)
-    void InitializeResources();
-
-    UFUNCTION(BlueprintCallable)
-    void GetResourceProduction(int32& OutFood, int32& OutProduction, int32& OutScience, int32& OutGold);
 };
