@@ -13,6 +13,32 @@ void AMiniCivGameMode::StartPlay()
 {
 	Super::StartPlay();
 	
+	CreateGameMap();
+
+	// AI 플레이어 초기화
+
+	SimulateGame(100);
+	
+}
+
+void AMiniCivGameMode::SimulateGame(int32 TurnLimit)
+{
+	for (int32 Turn = 0; Turn < TurnLimit; Turn++)
+	{
+		for (auto& CivAIPair : CivilizationsAndAIs)
+		{
+			CivAIPair.Value->MakeTurn(CivAIPair.Key);
+		}
+
+		if (CheckVictryCondition())
+		{
+			break;
+		}
+	}
+}
+
+void AMiniCivGameMode::CreateGameMap()
+{
 	// Create 10x10 grid of tiles
 	for (int x = 0; x < 10; x++)
 	{
@@ -28,4 +54,9 @@ void AMiniCivGameMode::StartPlay()
 			Tiles.Add(NewTile);
 		}
 	}
+}
+
+bool AMiniCivGameMode::CheckVictryCondition()
+{
+	return false;
 }
